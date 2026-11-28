@@ -15,7 +15,7 @@ the **probability that the task takes longer than the hours you have available**
 
 | Results table | Effort distribution | Weekly workload |
 |---|---|---|
-| ![Results](docs/screenshots/results.png) | ![Distribution](docs/screenshots/distribution.png) | ![Weekly workload](docs/screenshots/weekly.png) |
+| ![Results](docs/screenshots/results.jpg) | ![Distribution](docs/screenshots/distribution.jpg) | ![Weekly workload](docs/screenshots/weekly.jpg) |
 
 ---
 
