@@ -17,15 +17,18 @@ the **probability that the task takes longer than the hours you have available**
 |---|---|---|
 | ![Results](docs/screenshots/results.png) | ![Distribution](docs/screenshots/distribution.png) | ![Weekly workload](docs/screenshots/weekly.png) |
 
-<!-- TODO: take the three screenshots from the running app and save them with these names. -->
-
 ---
 
 ## Motivation
 
-Planning tools usually show *what* is due, not *how risky* it is. Students are bad at
-estimating effort, and a single number such as "4 hours" hides the uncertainty. UniFlow makes
-the uncertainty visible, so a student can see which tasks need an earlier start.
+I wanted to create a tool that helps students manage their assignments and exams more
+efficiently. Many traditional to-do list applications let users record tasks and deadlines,
+but they do not consider the uncertainty in the time needed to complete each task. An
+assignment may take less time than expected, while another may need several additional hours.
+A single number such as "4 hours" hides this uncertainty, so I wanted to build a planner that
+makes it visible and helps students see which tasks need an earlier start. Through this
+project I also wanted to improve my Python programming skills and learn more about
+probability and simulation.
 
 The idea of turning a pile of deadlines into a realistic plan was inspired by
 [Studyo](https://studyo.co/en/students). UniFlow is a separate, much smaller project with a
@@ -41,6 +44,8 @@ different approach (probabilistic risk analysis), and it does not reuse Studyo's
 - **Weekly workload** chart comparing the P90 hours due each week with your study capacity
 - **CSV upload** with validation and readable error messages, plus a downloadable template
 - **Reproducible results** with an optional fixed random seed
+- **Demo data that never goes stale:** the sample task dates shift automatically so the
+  earliest task is always 2 days away
 - **Unit tests** for the simulation logic (17 tests)
 
 ## How it works
@@ -66,11 +71,11 @@ simulated runs needed more than 6 hours, so the risk is **16.8% (Low)**.
 
 ## Installation & usage
 
-Requires Python 3.9 or newer.
+Developed and tested with Python 3.14 (Python 3.10 or newer is recommended).
 
 ```bash
-git clone https://github.com/<your-username>/uniflow.git
-cd uniflow
+git clone https://github.com/y-moonverse/UniFlow.git
+cd UniFlow
 
 python3 -m venv venv
 source venv/bin/activate          # Windows: venv\Scripts\activate
@@ -96,6 +101,8 @@ sidebar to try it immediately, or **Upload CSV** to use your own tasks.
 
 Rules: all hour columns must be numbers ≥ 0, and `optimistic ≤ likely ≤ pessimistic`.
 A template can be downloaded from the app's sidebar; see also `sample_tasks.csv`.
+(The dates in `sample_tasks.csv` are shifted automatically when the built-in sample data is
+loaded; uploaded files are used exactly as they are.)
 
 ## Running the tests
 
@@ -110,7 +117,7 @@ weekly workload calculation.
 ## Project structure
 
 ```
-uniflow/
+UniFlow/
 ├── app.py                    # Streamlit user interface
 ├── simulation.py             # Validation, Monte Carlo simulation, risk, weekly workload
 ├── sample_tasks.csv          # Example data
@@ -137,6 +144,8 @@ without starting the web app.
 
 ## Possible future work
 
+- Generate a day-by-day study schedule and compare different scheduling strategies
+  (planned in the original project proposal, not implemented yet)
 - Spread task effort over the days before each deadline
 - Edit tasks inside the app and export results as CSV
 - Correlated tasks and a combined "all tasks finish on time" probability
@@ -151,6 +160,10 @@ without starting the web app.
   project-management and statistics techniques.
 - **AI assistance:** this project was developed with the help of Claude (Anthropic) for
   planning, code drafting, tests and documentation. I reviewed, ran and adapted the result.
+
+## Author
+
+[@y-moonverse](https://github.com/y-moonverse)
 
 ## License
 
